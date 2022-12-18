@@ -1,4 +1,4 @@
-let client = TCPClient(host: "localhost", port: 3010)
+let client = TCPClient(host: "localhost", port: 8889)
 do {
     try client.start()
 } catch let error {

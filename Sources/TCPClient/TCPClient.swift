@@ -50,7 +50,7 @@ class TCPClient {
     
     private var bootstrap: ClientBootstrap {
         return ClientBootstrap(group: group)
-            .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
+            .channelOption(ChannelOptions.socketOption(.so_reuseaddr), value: 1)
             .channelInitializer { channel in
                 channel.pipeline.addHandler(TCPClientHandler())
         }
