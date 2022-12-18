@@ -17,7 +17,7 @@ class TCPClientHandler: ChannelInboundHandler {
     func channelActive(ctx: ChannelHandlerContext) {
         let message = "SwiftNIO rocks!"
         var buffer = ctx.channel.allocator.buffer(capacity: message.utf8.count)
-        buffer.write(string: message)
+        buffer.writeString(message)
         ctx.writeAndFlush(wrapOutboundOut(buffer), promise: nil)
     }
     

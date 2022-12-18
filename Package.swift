@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version: 5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,11 +6,16 @@ import PackageDescription
 let package = Package(
     name: "TCPClient",
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", .exact("1.5.1"))
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.0.0"),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "TCPClient",
-            dependencies: ["NIO"]),
+            dependencies: [
+                .product(name: "NIO", package: "swift-nio"),
+                //.product(name: "NIOCore", package: "swift-nio"),
+                //.product(name: "NIOPosix", package: "swift-nio"),
+                //.product(name: "NIOSSL", package: "swift-nio-ssl")
+            ]),
     ]
 )

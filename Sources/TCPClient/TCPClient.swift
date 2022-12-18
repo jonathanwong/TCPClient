@@ -14,7 +14,7 @@ enum TCPClientError: Error {
 }
 
 class TCPClient {
-    private let group = MultiThreadedEventLoopGroup(numThreads: 1)
+    private let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
     private var host: String?
     private var port: Int?
     
@@ -52,7 +52,7 @@ class TCPClient {
         return ClientBootstrap(group: group)
             .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
             .channelInitializer { channel in
-                channel.pipeline.add(handler: TCPClientHandler())
+                channel.pipeline.addHandler(TCPClientHandler())
         }
         
     }
